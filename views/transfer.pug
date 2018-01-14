@@ -1,0 +1,24 @@
+extends layout
+block link
+    link(rel="stylesheet", href="/stylesheets/main.css")
+block content
+    div(class="container")
+        form(class="box has-advanced-upload" method="post" action="/transfer" enctype="multipart/form-data")
+            div(class="box__input")
+                input(class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple)
+                label(for="file")
+                    strong Choose a file
+                    span(class="box__dragndrop")  or drag it here.
+                button(class="box__button" type="submit") Upload
+            div(class="box__uploading") Uploading&hellip;
+            div(class="box__success") Done!
+            div(class="box__error") Error! 
+                span .
+    a(class=`downloadlink ${visibility}` href="/transfer/download") Download the file
+    div.hint-container
+        .hint-success
+            .hint-text DONE!
+            .hint-bottom
+    script(type="text/javascript").
+        $('html').addClass('js')
+    script(src="/javascripts/upload.js")

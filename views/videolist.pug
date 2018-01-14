@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src="/javascripts/jquery.min.js")
+    body
+        ul
+            each item in movies
+                li
+                    div.title= item.title
+                    a(href=`${item.magnet}`) Download
+                    span= item.size
