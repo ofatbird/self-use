@@ -15,7 +15,8 @@
     "morgan": "~1.9.0",
     "power-off": "^1.1.2",
     "pug": "2.0.0-beta11",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "to-arraybuffer": "^1.0.1"
   },
   "devDependencies": {
     "video.js": "^6.6.0"

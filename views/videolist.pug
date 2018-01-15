@@ -8,6 +8,5 @@ html
         ul
             each item in movies
                 li
-                    div.title= item.title
-                    a(href=`${item.magnet}`) Download
-                    span= item.size
+                    div.title= item.name
+                    a(href=`${item.link}`) Play
