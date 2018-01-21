@@ -14,7 +14,7 @@ block content
             div(class="box__success") Done!
             div(class="box__error") Error! 
                 span .
-    a(class=`downloadlink ${visibility}` href="/transfer/download") Download the file
+    a(class=`downloadlink ${visibility}` href=`/transfer/download/${imgName}` download=`${imgName}`) Download the file
     div.hint-container
         .hint-success
             .hint-text DONE!

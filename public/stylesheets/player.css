@@ -10,6 +10,10 @@
 
 #my-video {
     margin: 0 auto;
+    /* width: 90%; */
+    /* max-width: 480px; */
+    /* max-width: hi; */
+    width:
 }
 
 .video-js button.vjs-big-play-button {
@@ -17,4 +21,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen {
+    
 }

@@ -13,7 +13,8 @@ var emitter = new EventEmitter()
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('transfer', { visibility: 'hidden' })
+  // console.log(path.basename(__OUTDATED))
+  res.render('transfer', { visibility: 'hidden',imgName: path.basename(__OUTDATED) })
 })
   .get('/msg', function (req, res, next) {
     res.writeHead(200, {
@@ -21,13 +22,17 @@ router.get('/', function (req, res, next) {
       'Cache-Control': 'no-cache',
       'Connection': 'keep-alive'
     })
-    emitter.on('done', function (name) {
+    function sendMsg (name) {
       var fileName = path.basename(name)
       res.write('\n')
-      res.write('data: '+ fileName +'\n\n')
+      res.write('data: ' + fileName + '\n\n')
+    }
+    emitter.on('done', sendMsg)
+    req.on('close', function () {
+      emitter.removeListener('done', sendMsg)
     })
   })
-  .get('/download', function (req, res, next) {
+  .get('/download/*', function (req, res, next) {
     while(isBusy) {}
     if (__OUTDATED) {
       res.download(__OUTDATED)
@@ -55,7 +60,7 @@ router.get('/', function (req, res, next) {
       __OUTDATED = name
       fs.rename(file.path, name)
       emitter.emit('done', name)
-      console.log("!!!!!", name)
+      console.log('!!!!!', name)
       isBusy = false
     })
     form.parse(req, function (err, fields, files) {

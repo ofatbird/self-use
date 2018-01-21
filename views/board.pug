@@ -1,0 +1,41 @@
+extends layout
+block link
+    link(rel="stylesheet", href="/stylesheets/board.css")
+block content
+    ul
+        each item in seeds
+            li(data-id=`${item._id}`)
+                img(src=`${item.pic}`)
+                p= item.number
+    .info-board
+        .info-container
+            .info-box
+                .cover
+                .detail
+            .magnet-box
+    script.
+        var $board = $('.info-board')
+        var $cover = $('.cover')
+        var $detail = $('.detail')
+        var $mBox = $('.magnet-box')
+        $('ul').on('click', 'li', function(e){
+            var $li = $(this)
+            var id = $li.attr('data-id')
+            var src = $li.find('img').attr('src')
+                .replace('.jpg', '_b.jpg').replace('thumb', 'cover')
+            $('.info-board').toggle()
+            $cover.html('<img src=' + src + '>')
+            $.get('/info/detail', {id:id}, function(data){
+                $detail.html(data.info)
+                $mBox.html(data.magnet)
+            })
+        })
+        $board.on('click', function() {
+            $board.toggle()
+        })
+        $('.info-container').on('touchstart', function(e){
+            e.stopPropagation()
+        }).on('scroll', function(e) {
+            e.stopPropagation()
+        })
+    
