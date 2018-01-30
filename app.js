@@ -9,7 +9,7 @@ var index = require('./routes/index')
 var users = require('./routes/users')
 var transfer = require('./routes/transfer')
 var player = require('./routes/player')
-var board = require('./routes/magnet')
+// var board = require('./routes/magnet')
 
 var app = express()
 
@@ -28,8 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', index)
 app.use('/users', users)
 app.use('/transfer', transfer)
-app.use('/player', player)
-app.use('/info', board)
+// app.use('/player', player)
+// app.use('/info', board)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
