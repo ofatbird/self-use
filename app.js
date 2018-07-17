@@ -4,14 +4,17 @@ var favicon = require('serve-favicon')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
+var io = require('socket.io')()
+
+var app = express()
+app.io = io
+
 
 var index = require('./routes/index')
 var users = require('./routes/users')
-var transfer = require('./routes/transfer')
+var transfer = require('./routes/transfer')(io)
 var player = require('./routes/player')
 // var board = require('./routes/magnet')
-
-var app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

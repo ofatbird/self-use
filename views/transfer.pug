@@ -19,7 +19,15 @@ block content
         .hint-success
             .hint-text DONE!
             .hint-bottom
+    div(class="chatRoom")
+        div(class="showMsg")
+            ul(id="appendmsg")
+        div(class="inputMsg")
+            input(id="input")
+    script(src="/javascripts/jquery.min.js")
     script(src="/javascripts/eventsource.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs=" crossorigin="anonymous")
     script(type="text/javascript").
         $('html').addClass('js')
     script(src="/javascripts/upload.js")
+    script(src="/javascripts/socket.js")

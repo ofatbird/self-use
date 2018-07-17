@@ -74,4 +74,16 @@ router.get('/', function (req, res, next) {
     })
   })
 
-module.exports = router
+// module.exports = router
+module.exports = function(io) {
+  io.on('connection', function(socket) {
+    // console.log('User has connected to Index');
+    socket.on('new message', function(msg) {
+      console.log(msg)
+      socket.broadcast.emit('new message', {
+        message: msg
+      })
+    })
+  })
+  return router
+}
